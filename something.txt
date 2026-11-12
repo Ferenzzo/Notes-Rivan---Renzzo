@@ -1,0 +1,2 @@
+<directories realtime="yes" check_all="yes" report_changes="yes">
+C:\Users\Administrator\Desktop\renzzo</directories>
