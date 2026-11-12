@@ -94,19 +94,33 @@ logging on
 logging host 208.8.8.133 transport udp port 9001
 logging trap informational
 end
------------------
+------all config being reported-----------
 conf t
 archive
 log config
 logging enable
 notify syslog
 end
----How to identify Bruteforce-----------------
+---How to identify Bruteforce/breach-----------------
 conf t
 login on-failure log
 login on-success log
 end
-----Blocking of Websites---------------------------------
+
+-----------Identify ------------Note:mawalan connection sa ssh----------------
+config t
+access-list 100 deny ip any host 208.8.8.129 log
+access-list 100 permit ip any any
+interface GigabitEthernet1
+ip access-group 100 in
+end
+
+###get back the ping and able to ssh again
+config t
+interface GigabitEthernet0/0
+no ip access-group 100 in
+end
+----Blocking of Websites----------Note: add log in ip to send logs in elastic/URL blocking can be used-----------------------
 config t
 NO ip access-list standard NOPORN
 ip access-list standard NOPORN
