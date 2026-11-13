@@ -168,7 +168,7 @@ line vty 0 14
 login local
 transport input ssh
 end
-----------Health Monitoring (e.g.Task maanger)------------
+----------Health Monitoring/Networking Monitoring (e.g.Task maanger)------------
 !@zabbix creds
 root
 zabbix
