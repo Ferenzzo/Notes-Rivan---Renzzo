@@ -11,7 +11,7 @@ DAY 3. Build Infra,Secure,Monitor
 - SOAR AI - Investigate folder + Wazuh integration with shuffle
 - Train AI to be your agent/or for specific operations (Suggested)
 - win32ui.exe (to debug the show agent in the Wazuh site) change ip in view then manage then start
-
+- use gpedit.msc to make the result pass from the benchmarking
 
 
 Levels 0–3 → "Just logs"
