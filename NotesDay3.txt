@@ -1,3 +1,19 @@
+DAY 3. Build Infra,Secure,Monitor
+1. Wazuh - Monitors logs, End point Security (Benchmarks devices/tickets before deploying agent)
+-File integrity Monitoring, Threat hunting, Security Operations
+- JSON - Used to read logs
+- Logs for Network
+- CrowdStrike (Paid)
+- Elastic search- Syslog (For SOC usually done remotely)
+- Cloud Storage = Simplified
+- Zabbix (Health Monitoring like system, usage of device, etc.
+- Jumpserver - privileged access management
+- SOAR AI - Investigate folder + Wazuh integration with shuffle
+- Train AI to be your agent/or for specific operations (Suggested)
+- win32ui.exe (to debug the show agent in the Wazuh site) change ip in view then manage then start
+
+
+
 Levels 0–3 → "Just logs"
 
 Normal system behavior.
