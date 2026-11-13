@@ -1,0 +1,82 @@
+Day 4- Build Network (Radius),
+
+# Create self-signed certificate for www.bpi.ph.com
+$cert = New-SelfSignedCertificate -DnsName "www.bpi.ph.com" -CertStoreLocation "Cert:\LocalMachine\My"
+
+# Bind HTTPS to website with correct cert
+$siteName = "bpi.ph.com"
+$hostname = "www.bpi.ph.com"
+$certThumbprint = $cert.Thumbprint
+
+# Ensure SSL binding
+New-WebBinding -Name $siteName -Protocol https -Port 443 -HostHeader $hostname
+
+# Bind certificate to HTTPS binding
+Push-Location IIS:\SslBindings
+New-Item "0.0.0.0!443!$hostname" -Thumbprint $certThumbprint -SSLFlags 1
+Pop-Location
+
+# OPTIONAL: Import cert into Trusted Root if you want local trust automatically
+$certPath = "Cert:\LocalMachine\My\$certThumbprint"
+$rootStore = New-Object System.Security.Cryptography.X509Certificates.X509Store("Root","LocalMachine")
+$rootStore.Open("ReadWrite")
+$rootStore.Add((Get-Item $certPath))
+$rootStore.Close()
+
+# Restart IIS
+iisreset
+
+--------Active Directory Certificate Services for Sites---------------
+
+
+--------------------
+conf t
+aaa new-model
+username admin password pass
+radius-server host 10.22.1.8 key aaaaaaaa
+ip radius source vlan 1
+aaa authorization exec default group radius
+aaa authentication login default group radius local
+line vty 0 14
+login authentication default
+end
+-----------------------------
+New Fortinent Credentials:
+default ip add (between network and fortinet) : 192.168.1.99/24
+admin
+(press enter)
+pass
+pass
+
+----------------------
+pornhub.com - 66.254.114.41
+onlyfans.com - 172.66.0.144
+beeg.com - 172.67.181.179
+	   104.
+faketaxi.com - 66.254.114.234
+bangbus.com - 66.254.114.234
+xvideos.com - 89.222.127.6
+pinayflix.com -172.67.146.93
+	      - 104.21.55.88  
+vivamax.com - 64.98.135.95
+sulasok.tv - 104.21.34.102
+brazzers.com - 66.254.114.234
+digitalplayground.com - 
+
+66.254.114.0/24
+104.21.0.0/16
+172.67.0.0/16
+104.18.29.44/32
+89.222.127.0/24
+162.159.140.146/32
+
+
+
+
+
+
+
+
+
+
+
